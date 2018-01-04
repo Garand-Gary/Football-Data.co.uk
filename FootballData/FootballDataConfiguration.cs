@@ -5,10 +5,16 @@ namespace FootballData
 {
     public class FootballDataConfiguration : ConfigurationSection
     {
-        [ConfigurationProperty("baseUrl", IsRequired = true)]
-        public string BaseUrl
+        [ConfigurationProperty("resultUrl", IsRequired = true)]
+        public string ResultUrl
         {
-            get { return this["baseUrl"] as string; }
+            get { return this["resultUrl"] as string; }
+        }
+
+        [ConfigurationProperty("fixturesUrl", IsRequired = true)]
+        public string FixturesUrl
+        {
+            get { return this["fixturesUrl"] as string; }
         }
 
         [ConfigurationProperty("leagues", IsRequired = true)]
@@ -18,7 +24,7 @@ namespace FootballData
         }
     }
 
-    public class FootballDataLeagueConfigurationElement : ConfigurationElement
+    public class FootballDataCountryConfigurationElement : ConfigurationElement
     {
         [ConfigurationProperty("id", IsRequired = true)]
         public string Id
@@ -30,6 +36,65 @@ namespace FootballData
         public string Name
         {
             get { return this["name"] as string; }
+        }
+
+        [ConfigurationProperty("nationality", IsRequired = true)]
+        public string Nationality
+        {
+            get { return this["nationality"] as string; }
+        }
+    }
+
+    public class FootballDataCountryConfigurationCollection : ConfigurationElementCollection
+    {
+        public FootballDataCountryConfigurationElement this[int index]
+        {
+            get { return BaseGet(index) as FootballDataCountryConfigurationElement; }
+            set
+            {
+                if (BaseGet(index) != null)
+                {
+                    BaseRemoveAt(index);
+                }
+                BaseAdd(index, value);
+            }
+        }
+
+        protected override ConfigurationElement CreateNewElement()
+        {
+            return new FootballDataCountryConfigurationElement();
+        }
+
+        protected override object GetElementKey(ConfigurationElement element)
+        {
+            return ((FootballDataCountryConfigurationElement)element).Id;
+        }
+    }
+
+    public class FootballDataLeagueConfigurationElement : ConfigurationElement
+    {
+        [ConfigurationProperty("id", IsRequired = true)]
+        public string Id
+        {
+            get { return this["id"] as string; }
+        }
+
+        [ConfigurationProperty("country", IsRequired = true)]
+        public string Country
+        {
+            get { return this["country"] as string; }
+        }
+
+        [ConfigurationProperty("name", IsRequired = true)]
+        public string Name
+        {
+            get { return this["name"] as string; }
+        }
+
+        [ConfigurationProperty("tier", IsRequired = true)]
+        public int Tier
+        {
+            get { return (int)this["tier"]; }
         }
     }
 
