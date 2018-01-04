@@ -45,7 +45,6 @@
     <Compile Include="Country.cs" />
     <Compile Include="Fixture.cs" />
     <Compile Include="Fixtures.cs" />
-    <Compile Include="FootballDataConfiguration.cs" />
     <Compile Include="Countries.cs" />
     <Compile Include="League.cs" />
     <Compile Include="Leagues.cs" />
@@ -60,7 +59,9 @@
     <Compile Include="WebOps.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <Content Include="FootballData.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

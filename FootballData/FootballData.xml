@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<footballDataConfiguration>
+  <urls>
+    <url id="resultUrl" url="http://www.football-data.co.uk/mmz4281/{season}/{leagueId}.csv"/>
+    <url id="fixturesUrl" url="http://www.football-data.co.uk/fixtures.csv"/>
+  </urls>
+  <countries>
+    <country id="EN" name="England" nationality="English"/>
+    <country id="SC" name="Scotland" nationality="Scottish"/>
+  </countries>
+  <leagues>
+    <league id="E0" country="EN" name="Premier League" tier="1"/>
+    <league id="E1" country="EN" name="Championship" tier="2"/>
+    <league id="E2" country="EN" name="League 1" tier="3"/>
+    <league id="E3" country="EN" name="League 2" tier="4"/>
+    <league id="EC" country="EN" name="Conference" tier="5"/>
+  </leagues>
+</footballDataConfiguration>
