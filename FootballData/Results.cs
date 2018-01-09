@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FootballData
 {
@@ -19,9 +17,11 @@ namespace FootballData
             var url = GenerateUrl(leagueId, season);
 
             var data = WebOps.GetCsvFile(url, out lastModifiedTime);
+            var matches = CsvOps.GetMatchesFromCsv(data);
 
+            var results = matches.Select(match => new Result(match)).ToList();
 
-            return new List<Result>();
+            return results;
         }
 
         private static string GenerateUrl(string leagueId, string season)

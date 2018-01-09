@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.IO;
 
 namespace FootballData
 {
@@ -17,8 +14,11 @@ namespace FootballData
         public static List<Fixture> Get(out DateTime lastModifiedTime)
         {
             var data = WebOps.GetCsvFile(Config.FixturesUrl, out lastModifiedTime);
+            var matches = CsvOps.GetMatchesFromCsv(data);
 
-            return null;
+            var fixtures = matches.Select(match => new Fixture(match)).ToList();
+
+            return fixtures;
         }
     }
 }
