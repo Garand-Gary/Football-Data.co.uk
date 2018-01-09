@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FootballData
 {
@@ -14,6 +10,8 @@ namespace FootballData
         public DateTime MatchDate { get { return thisMatch.MatchDate; } }
         public Team HomeTeam { get { return thisMatch.HomeTeam; } }
         public Team AwayTeam { get { return thisMatch.AwayTeam; } }
+
+        public Referee Referee { get { return thisMatch.Referee; } }
 
         public Score FullTimeScore { get { return thisMatch.FullTimeScore; } }
         public Outcome FullTimeResult { get { return thisMatch.FullTimeResult; } }
