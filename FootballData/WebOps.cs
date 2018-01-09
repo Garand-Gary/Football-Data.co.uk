@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Net;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FootballData
 {
@@ -38,7 +34,13 @@ namespace FootballData
                 if (response.StatusCode == HttpStatusCode.OK)
                 {
                     lastModifiedTime = response.LastModified;
-                    return response.GetResponseStream();
+                    var outputStream = new MemoryStream();
+
+                    using (Stream responseStream = response.GetResponseStream())
+                    {
+                        responseStream.CopyTo(outputStream);
+                        return outputStream;
+                    }
                 }
                 else
                 {
