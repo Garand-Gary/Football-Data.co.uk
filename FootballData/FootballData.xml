@@ -7,12 +7,49 @@
   <countries>
     <country id="EN" name="England" nationality="English"/>
     <country id="SC" name="Scotland" nationality="Scottish"/>
+    <country id="DE" name="Germany" nationality="German"/>
+    <country id="IT" name="Italy" nationality="Italian"/>
+    <country id="ES" name="Spain" nationality="Spanish"/>
+    <country id="FR" name="France" nationality="French"/>
+    <country id="NL" name="Netherlands" nationality="Dutch"/>
+    <country id="BE" name="Belgium" nationality="Belgian"/>
+    <country id="PT" name="Portugal" nationality="Portuguese"/>
+    <country id="TR" name="Turkey" nationality="Turkish"/>
+    <country id="GR" name="Greece" nationality="Greek"/>
   </countries>
   <leagues>
+    <!--- English Leagues -->
     <league id="E0" country="EN" name="Premier League" tier="1"/>
     <league id="E1" country="EN" name="Championship" tier="2"/>
     <league id="E2" country="EN" name="League 1" tier="3"/>
     <league id="E3" country="EN" name="League 2" tier="4"/>
     <league id="EC" country="EN" name="Conference" tier="5"/>
+    <!-- Scottish Leagues -->
+    <league id="SC0" country="SC" name="Premiership" tier="1"/>
+    <league id="SC1" country="SC" name="Championship" tier="2"/>
+    <league id="SC2" country="SC" name="League 1" tier="3"/>
+    <league id="SC3" country="SC" name="League 2" tier="4"/>
+    <!-- German Leagues -->
+    <league id="D1" country="DE" name="Bundesliga 1" tier="1"/>
+    <league id="D2" country="DE" name="Bundesliga 2" tier="2"/>
+    <!-- Italian Leagues -->
+    <league id="I1" country="IT" name="Serie A" tier="1"/>
+    <league id="I2" country="IT" name="Serie B" tier="2"/>
+    <!-- Spanish Leagues -->
+    <league id="SP1" country="ES" name="La Liga Primera Division" tier="1"/>
+    <league id="SP2" country="ES" name="La Liga Segunda Division" tier="2"/>
+    <!-- French Leagues -->
+    <league id="F1" country="FR" name="Ligue 1" tier="1"/>
+    <league id="F2" country="FR" name="Ligue 2" tier="2"/>
+    <!-- Dutch Leagues -->
+    <league id="N1" country="NL" name="Eredivise" tier="1"/>
+    <!-- Belgian Leagues -->
+    <league id="B1" country="BE" name="First Division" tier="1"/>
+    <!-- Portuguese Leagues -->
+    <league id="P1" country="PT" name="Liga I" tier="1"/>
+    <!-- Turkish Leagues -->
+    <league id="T1" country="TR" name="Futbol Ligi 1" tier="1"/>
+    <!-- Greek Leagues -->
+    <league id="G1" country="GR" name="Ethniki Katigoria" tier="1"/>
   </leagues>
 </footballDataConfiguration>
