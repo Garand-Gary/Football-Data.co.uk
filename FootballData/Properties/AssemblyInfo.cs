@@ -34,3 +34,6 @@ using System.Runtime.InteropServices;
 // [assembly: AssemblyVersion("1.0.*")]
 [assembly: AssemblyVersion("1.0.0.0")]
 [assembly: AssemblyFileVersion("1.0.0.0")]
+
+// This is needed to allow the unit test project to have access to internal classes and methods
+[assembly: InternalsVisibleTo("FootballDataTests")]
