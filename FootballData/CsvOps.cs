@@ -5,7 +5,7 @@ using System.IO;
 
 namespace FootballData
 {
-    class CsvOps
+    internal class CsvOps
     {
         internal static List<Match> GetMatchesFromCsv(Stream data)
         {
