@@ -6,15 +6,15 @@ namespace FootballData
 {
     public static class Results
     {
-        public static bool DataHasBeenUpdated(string leagueId, string season, DateTime sinceDate)
+        public static bool DataHasBeenUpdated(League league, string season, DateTime sinceDate)
         {
-            return WebOps.GetLastModifiedTime(GenerateUrl(leagueId, season)) > sinceDate;
+            return WebOps.GetLastModifiedTime(GenerateUrl(league.Id, season)) > sinceDate;
         }
 
-        public static List<Result> Get(string leagueId, string season, out DateTime lastModifiedTime)
+        public static List<Result> Get(League league, string season, out DateTime lastModifiedTime)
         {
             // TODO: Return a proper type, not a string
-            var url = GenerateUrl(leagueId, season);
+            var url = GenerateUrl(league.Id, season);
 
             var data = WebOps.GetCsvFile(url, out lastModifiedTime);
             var matches = CsvOps.GetMatchesFromCsv(data);
