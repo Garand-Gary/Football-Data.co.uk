@@ -89,22 +89,22 @@ namespace FootballData
             {
                 var list = new List<Statistic>();
 
-                list.AddIfNotNull(GetStat(StatType.Shots, prefix + "S", row));
-                list.AddIfNotNull(GetStat(StatType.ShotsOnTarget, prefix + "ST", row));
-                list.AddIfNotNull(GetStat(StatType.HitWoodwork, prefix + "HW", row));
-                list.AddIfNotNull(GetStat(StatType.Corners, prefix + "C", row));
-                list.AddIfNotNull(GetStat(StatType.FoulsCommitted, prefix + "F", row));
-                list.AddIfNotNull(GetStat(StatType.Offsides, prefix + "O", row));
-                list.AddIfNotNull(GetStat(StatType.YellowCards, prefix + "Y", row));
-                list.AddIfNotNull(GetStat(StatType.RedCards, prefix + "R", row));
-                list.AddIfNotNull(GetStat(StatType.BookingPoints, prefix + "BP", row));
+                list.AddIfNotNull(GetStat(Statistic.StatType.Shots, prefix + "S", row));
+                list.AddIfNotNull(GetStat(Statistic.StatType.ShotsOnTarget, prefix + "ST", row));
+                list.AddIfNotNull(GetStat(Statistic.StatType.HitWoodwork, prefix + "HW", row));
+                list.AddIfNotNull(GetStat(Statistic.StatType.Corners, prefix + "C", row));
+                list.AddIfNotNull(GetStat(Statistic.StatType.FoulsCommitted, prefix + "F", row));
+                list.AddIfNotNull(GetStat(Statistic.StatType.Offsides, prefix + "O", row));
+                list.AddIfNotNull(GetStat(Statistic.StatType.YellowCards, prefix + "Y", row));
+                list.AddIfNotNull(GetStat(Statistic.StatType.RedCards, prefix + "R", row));
+                list.AddIfNotNull(GetStat(Statistic.StatType.BookingPoints, prefix + "BP", row));
 
                 return list;
             }
             );
         }
 
-        private Statistic GetStat(StatType type, string csvFieldName, IReaderRow row)
+        private Statistic GetStat(Statistic.StatType type, string csvFieldName, IReaderRow row)
         {
             try
             {
