@@ -122,9 +122,9 @@ namespace FootballData
     // Extension method to make adding statistics less of a burden. For some lower leagues
     // we can expect the stats to be incomplete and therefore missing from the file
     // E.g. Scottish lower divisions only have the scores
-    public static class ListExtensions
+    internal static class ListExtensions
     {
-        public static void AddIfNotNull<T>(this List<T> list, T item)
+        internal static void AddIfNotNull<T>(this List<T> list, T item)
         {
             if (item != null) { list.Add(item); }
         }
