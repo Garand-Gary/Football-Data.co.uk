@@ -20,5 +20,12 @@ namespace FootballData
 
             return fixtures;
         }
+
+        public static List<Fixture> Get()
+        {
+            // We need to delcare the lastModified parameter but we will chuck it away
+            var lastModified = new DateTime();
+            return Get(out lastModified);
+        }
     }
 }

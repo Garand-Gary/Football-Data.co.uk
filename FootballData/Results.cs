@@ -23,6 +23,13 @@ namespace FootballData
             return results;
         }
 
+        public static List<Result> Get(League league, Season season)
+        {
+            // Create a last modified parameter to satisfy the core method, but don't use it
+            var lastModified = new DateTime();
+            return Get(league, season, out lastModified);
+        }
+
         private static string GenerateUrl(string leagueId, string season)
         {
             var baseUrl = Config.ResultUrl;
