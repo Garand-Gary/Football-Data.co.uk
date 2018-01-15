@@ -16,6 +16,7 @@ namespace FootballData
             References<RefereeMap>(x => x.Referee);
             References<FullTimeScoreMap>(x => x.FullTimeScore);
             References<HalfTimeScoreMap>(x => x.HalfTimeScore);
+            References<BettingMap>(x => x.Betting);
         }
     }
 
@@ -111,6 +112,138 @@ namespace FootballData
                 var value = row.GetField<int?>(csvFieldName);
                 if (value != null) { return new Statistic { Type = type, Value = value }; }
                 return null;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+    }
+
+    internal class BettingMap : ClassMap<Betting>
+    {
+        public BettingMap()
+        {
+            Map(x => x.MatchBets).ConvertUsing(row =>
+            {
+                var list = new List<MatchBet>();
+
+                Bookmakers.Get().ForEach(x => list.AddIfNotNull(GetMatchBet(row, x)));
+
+                return list;
+            });
+
+            Map(x => x.GoalsBets).ConvertUsing(row =>
+            {
+                var list = new List<GoalsBet>();
+
+                Bookmakers.Get().ForEach(x => list.AddIfNotNull(GetGoalsBet(row, x)));
+
+                return list;
+            });
+
+            Map(x => x.AsianHandicapBets).ConvertUsing(row =>
+            {
+                var list = new List<AsianHandicapBet>();
+
+                Bookmakers.Get().ForEach(x => list.AddIfNotNull(GetAsianHandicapBet(row, x)));
+
+                return list;
+            });
+
+            Map(x => x.ClosingOdds).ConvertUsing(row =>
+            {
+                return GetMatchBet(row, new Bookmaker { Id = "PSC", Name = "Pinnacle Sports Closing" });
+            });
+        }
+
+        private MatchBet GetMatchBet(IReaderRow row, Bookmaker bm)
+        {
+            try
+            {
+                var home = GetValue(row, bm.Id + "H");
+                var draw = GetValue(row, bm.Id + "D");
+                var away = GetValue(row, bm.Id + "A");
+
+                // We will assume if we have home odds we have all odds
+                if (home != null)
+                {
+                    return new MatchBet
+                    {
+                        Bookmaker = bm,
+                        Home = (decimal)home,
+                        Draw = (decimal)draw,
+                        Away = (decimal)away
+                    };
+                }
+
+                return null;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        private GoalsBet GetGoalsBet(IReaderRow row, Bookmaker bm)
+        {
+            try
+            {
+                var over = GetValue(row, bm.Id + ">2.5");
+                var under = GetValue(row, bm.Id + "<2.5");
+
+                // If we have over we will assume we are good to go
+                if (over != null)
+                {
+                    return new GoalsBet
+                    {
+                        Bookmaker = bm,
+                        Over2_5 = (decimal)over,
+                        Under2_5 = (decimal)under
+                    };
+                }
+
+                return null;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        private AsianHandicapBet GetAsianHandicapBet(IReaderRow row, Bookmaker bm)
+        {
+            try
+            {
+                var home = GetValue(row, bm.Id + "AHH");
+                var away = GetValue(row, bm.Id + "AHA");
+                var handicap = GetValue(row, bm.Id + "AH");
+
+                // Assume if we have the home we have the lot
+                if (home != null)
+                {
+                    return new AsianHandicapBet
+                    {
+                        Bookmaker = bm,
+                        Home = (decimal)home,
+                        Away = (decimal)away,
+                        HomeTeamHandicap = (decimal)handicap
+                    };
+                }
+
+                return null;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        private decimal? GetValue(IReaderRow row, string key)
+        {
+            try
+            {
+                return row.GetField<decimal?>(key);
             }
             catch
             {
