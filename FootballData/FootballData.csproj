@@ -55,7 +55,7 @@
     <Compile Include="League.cs" />
     <Compile Include="Leagues.cs" />
     <Compile Include="Match.cs" />
-    <Compile Include="MatchOdds.cs" />
+    <Compile Include="Betting.cs" />
     <Compile Include="Season.cs" />
     <Compile Include="Seasons.cs" />
     <Compile Include="Statistics.cs" />

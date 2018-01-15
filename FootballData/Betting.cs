@@ -1,6 +1,6 @@
 ﻿namespace FootballData
 {
-    public class MatchOdds
+    public class Betting
     {
     }
 }
