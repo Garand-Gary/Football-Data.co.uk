@@ -7,7 +7,7 @@ namespace FootballData
 {
     internal static class Config
     {
-        private static string configFileName = "FootballData.xml";
+        private static string configFileName = "FootballDataConfig.xml";
 
         internal static string ResultUrl
         {
