@@ -17,7 +17,7 @@ namespace FootballData
         public Score HalfTimeScore { get; set; }
         public Outcome HalfTimeResult { get { return GetOutcome(HalfTimeScore); } }
 
-        public MatchOdds Odds { get; set; }
+        public Betting Odds { get; set; }
 
         private Outcome GetOutcome(Score score)
         {
@@ -28,12 +28,12 @@ namespace FootballData
 
             return Outcome.Draw;
         }
+    }
 
-        public enum Outcome
-        {
-            Draw,
-            Home,
-            Away
-        }
+    public enum Outcome
+    {
+        Draw,
+        Home,
+        Away
     }
 }
