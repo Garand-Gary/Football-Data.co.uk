@@ -9,7 +9,8 @@ namespace FootballData
         public string ShortName { get; }
         public string LongName { get; }
 
-        internal int StartYear { get; }
+        public int StartYear { get; }
+        public int EndYear { get; }
 
         internal Season(int startYear, int endYear)
         {
@@ -24,6 +25,7 @@ namespace FootballData
             LongName = String.Format("{0}/{1}", startDate.ToString("yyyy"), endDate.ToString("yyyy"));
 
             StartYear = startYear;
+            EndYear = endYear;
         }
     }
 }
