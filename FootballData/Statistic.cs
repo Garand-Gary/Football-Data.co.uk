@@ -2,7 +2,7 @@
 {
     public class Statistic
     {
-        public StatType Type { get; set; }
+        public Statistics.StatType Type { get; set; }
         public int? Value { get; set; }
     }
 }
