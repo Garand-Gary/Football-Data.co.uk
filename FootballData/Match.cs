@@ -28,12 +28,12 @@ namespace FootballData
 
             return Outcome.Draw;
         }
-    }
 
-    public enum Outcome
-    {
-        Draw,
-        Home,
-        Away
+        public enum Outcome
+        {
+            Draw,
+            Home,
+            Away
+        }
     }
 }
