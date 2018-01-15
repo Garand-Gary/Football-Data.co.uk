@@ -44,5 +44,10 @@ namespace FootballData
 
             return seasons.OrderByDescending(x => x.StartYear).ToList();
         }
+
+        public static Season GetLatest()
+        {
+            return Get().First();
+        }
     }
 }
