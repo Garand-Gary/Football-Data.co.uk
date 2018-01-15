@@ -2,14 +2,39 @@
 
 namespace FootballData
 {
+    /// <summary>
+    /// A class representing a season that football-data.co.uk holds data for
+    /// </summary>
     public class Season
     {
+        /// <summary>
+        /// The four digit ID for this season, which is found in the URL for the data
+        /// </summary>
         public string Id { get; }
+
+        /// <summary>
+        /// The common name for this season, e.g. 2017/18
+        /// </summary>
         public string Name { get; }
+
+        /// <summary>
+        /// The short name for this season, e.g. 17/18
+        /// </summary>
         public string ShortName { get; }
+
+        /// <summary>
+        /// The long name for this season, e.g. 2017/2018
+        /// </summary>
         public string LongName { get; }
 
+        /// <summary>
+        /// The year during which this season started
+        /// </summary>
         public int StartYear { get; }
+
+        /// <summary>
+        /// The year during which this season ended
+        /// </summary>
         public int EndYear { get; }
 
         internal Season(int startYear, int endYear)

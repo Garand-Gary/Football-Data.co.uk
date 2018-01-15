@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace FootballData
 {
+    /// <summary>
+    /// Container class for all the seasons for which football-data.co.uk holds data
+    /// </summary>
     public static class Seasons
     {
         // We'll generate seasons on the fly here. Seasons could go in the config 
@@ -30,6 +33,10 @@ namespace FootballData
             }
         }
 
+        /// <summary>
+        /// Returns a list of all seasons for which there is data
+        /// </summary>
+        /// <returns></returns>
         public static List<Season> Get()
         {
             var seasons = new List<Season>();
@@ -45,6 +52,10 @@ namespace FootballData
             return seasons.OrderByDescending(x => x.StartYear).ToList();
         }
 
+        /// <summary>
+        /// Returns an object representing the latest season
+        /// </summary>
+        /// <returns></returns>
         public static Season GetLatest()
         {
             return Get().First();

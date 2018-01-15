@@ -30,10 +30,24 @@ namespace FootballData
         }
     }
 
+    /// <summary>
+    /// Enumeration representing the three outcomes of a football match
+    /// </summary>
     public enum Outcome
     {
+        /// <summary>
+        /// The match was a draw
+        /// </summary>
         Draw,
+
+        /// <summary>
+        /// The home team won
+        /// </summary>
         Home,
+
+        /// <summary>
+        /// The away team won
+        /// </summary>
         Away
     }
 }

@@ -2,9 +2,16 @@
 
 namespace FootballData
 {
+    /// <summary>
+    /// Container class for all countries within the library
+    /// </summary>
     public static class Countries
     {
-        public static List<Country> GetAll()
+        /// <summary>
+        /// Returns all countries within the library
+        /// </summary>
+        /// <returns></returns>
+        public static List<Country> Get()
         {
             return Config.GetCountries();
         }
