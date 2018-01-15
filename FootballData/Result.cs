@@ -19,7 +19,7 @@ namespace FootballData
         public Score HalfTimeScore { get { return thisMatch.HalfTimeScore; } }
         public Outcome HalfTimeResult { get { return thisMatch.HalfTimeResult; } }
 
-        public Betting Odds { get { return thisMatch.Odds; } }
+        public Betting Betting { get { return thisMatch.Betting; } }
 
         internal Result(Match match)
         {

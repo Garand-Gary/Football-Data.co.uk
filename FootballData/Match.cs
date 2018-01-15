@@ -17,7 +17,7 @@ namespace FootballData
         public Score HalfTimeScore { get; set; }
         public Outcome HalfTimeResult { get { return GetOutcome(HalfTimeScore); } }
 
-        public Betting Odds { get; set; }
+        public Betting Betting { get; set; }
 
         private Outcome GetOutcome(Score score)
         {

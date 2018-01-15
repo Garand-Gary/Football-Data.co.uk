@@ -10,7 +10,7 @@ namespace FootballData
         public DateTime MatchDate { get { return thisMatch.MatchDate; } }
         public Team HomeTeam { get { return thisMatch.HomeTeam; } }
         public Team AwayTeam { get { return thisMatch.AwayTeam; } }
-        public Betting Odds { get { return thisMatch.Odds; } }
+        public Betting Odds { get { return thisMatch.Betting; } }
 
         internal Fixture(Match match)
         {
