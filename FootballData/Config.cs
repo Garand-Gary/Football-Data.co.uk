@@ -48,6 +48,19 @@ namespace FootballData
                 .ToList();
         }
 
+        internal static List<Bookmaker> GetBookmakers()
+        {
+            var config = GetConfigFile();
+
+            return config.Descendants("bookmaker")
+                .Select(x => new Bookmaker()
+                {
+                    Id = x.Attribute("id").Value,
+                    Name = x.Attribute("name").Value
+                })
+                .ToList();
+        }
+
         private static XDocument GetConfigFile()
         {
             XDocument config = XDocument.Load(configFileName);

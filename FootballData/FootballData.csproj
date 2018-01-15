@@ -45,6 +45,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AsianHandicapBet.cs" />
+    <Compile Include="Bookmaker.cs" />
+    <Compile Include="Bookmakers.cs" />
     <Compile Include="Config.cs" />
     <Compile Include="Country.cs" />
     <Compile Include="CsvOps.cs" />
@@ -52,10 +55,12 @@
     <Compile Include="Fixture.cs" />
     <Compile Include="Fixtures.cs" />
     <Compile Include="Countries.cs" />
+    <Compile Include="GoalsBet.cs" />
     <Compile Include="League.cs" />
     <Compile Include="Leagues.cs" />
     <Compile Include="Match.cs" />
     <Compile Include="Betting.cs" />
+    <Compile Include="MatchBet.cs" />
     <Compile Include="Season.cs" />
     <Compile Include="Seasons.cs" />
     <Compile Include="Statistics.cs" />

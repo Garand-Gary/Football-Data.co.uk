@@ -52,4 +52,19 @@
     <!-- Greek Leagues -->
     <league id="G1" country="GR" name="Ethniki Katigoria" tier="1"/>
   </leagues>
+  <bookmakers>
+    <bookmaker id="B365" name="Bet365"/>
+    <bookmaker id="BS" name="Blue Square"/>
+    <bookmaker id="BW" name="Bet&amp;Win"/>
+    <bookmaker id="GB" name="Gamebookers"/>
+    <bookmaker id="IW" name="Interwetten"/>
+    <bookmaker id="LB" name="Ladbrokes"/>
+    <bookmaker id="PS" name="Pinnacle"/>
+    <bookmaker id="SO" name="Sporting Odds"/>
+    <bookmaker id="SB" name="Sportingbet"/>
+    <bookmaker id="SJ" name="Stan James"/>
+    <bookmaker id="SY" name="Stanleybet"/>
+    <bookmaker id="VC" name="BetVictor"/>
+    <bookmaker id="WH" name="William Hill"/>
+  </bookmakers>
 </footballDataConfiguration>
