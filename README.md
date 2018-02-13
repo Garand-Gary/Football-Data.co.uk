@@ -1,4 +1,4 @@
-# [Football-Data.co.uk](http://www.football-data.co.uk/) Consumer
+# [Football-Data.co.uk](http://www.football-data.co.uk/) API
 
 ## About
 This is my library for accessing the fixture data and historical results data from the amazing and free football-data.co.uk.
