@@ -7,7 +7,7 @@ namespace FootballData
 {
     internal static class Config
     {
-        private static string configFileName = "FootballDataConfig.xml";
+        private static string configFileName = "FootballData.FootballDataConfig.xml";
 
         internal static string ResultUrl
         {
@@ -63,7 +63,10 @@ namespace FootballData
 
         private static XDocument GetConfigFile()
         {
-            XDocument config = XDocument.Load(configFileName);
+            var assembly = System.Reflection.Assembly.GetExecutingAssembly();
+            var doc = assembly.GetManifestResourceStream(configFileName);
+
+            XDocument config = XDocument.Load(doc);
             return config;
         }
 

@@ -8,7 +8,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>FootballData</RootNamespace>
-    <AssemblyName>FootballData</AssemblyName>
+    <AssemblyName>Football-Data-API</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -20,7 +20,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Debug\FootballData.XML</DocumentationFile>
+    <DocumentationFile>bin\Debug\Football-Data-API.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -75,9 +75,7 @@
     <Compile Include="WebOps.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="FootballDataConfig.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    <EmbeddedResource Include="FootballDataConfig.xml" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
