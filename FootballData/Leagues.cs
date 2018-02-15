@@ -24,7 +24,17 @@ namespace FootballData
         /// <returns></returns>
         public static List<League> GetAllForCountry(string countryCode)
         {
-            return GetAll().Where(x => x.Country == countryCode).ToList();
+            return GetAll().Where(x => x.Country.Id == countryCode).ToList();
+        }
+
+        /// <summary>
+        /// Returns all leagues within the specified country
+        /// </summary>
+        /// <param name="country">The Country object for which leagues are being requested</param>
+        /// <returns></returns>
+        public static List<League> GetAllForCountry(Country country)
+        {
+            return GetAllForCountry(country.Id);
         }
     }
 }

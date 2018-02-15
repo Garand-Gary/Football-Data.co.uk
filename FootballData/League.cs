@@ -13,7 +13,7 @@
         /// <summary>
         /// The country this league is based in
         /// </summary>
-        public string Country { get; set; }
+        public Country Country { get; set; }
 
         /// <summary>
         /// The name of this league

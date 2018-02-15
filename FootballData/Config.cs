@@ -37,11 +37,14 @@ namespace FootballData
         {
             var config = GetConfigFile();
 
+            // We want the proper country object associated with each league, not just the ID
+            var countries = GetCountries();
+
             return config.Descendants("league")
                 .Select(x => new League()
                 {
                     Id = x.Attribute("id").Value,
-                    Country = x.Attribute("country").Value,
+                    Country = countries.First(c => c.Id == x.Attribute("country").Value),
                     Name = x.Attribute("name").Value,
                     Tier = Convert.ToInt32(x.Attribute("tier").Value)
                 })
