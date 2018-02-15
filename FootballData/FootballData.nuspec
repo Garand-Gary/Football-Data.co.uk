@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>$id$</id>
+    <version>$version$</version>
+    <title>$title$</title>
+    <authors>$author$</authors>
+    <owners>$author$</owners>
+    <projectUrl>https://github.com/Garand-Gary/Football-Data.co.uk</projectUrl>
+    <iconUrl>https://garyanderson.org/Images/Projects/football-data.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>$description$</description>
+    <releaseNotes>This is an unoffocial package and is in no way associated with football-data.co.uk.</releaseNotes>
+    <copyright>Copyright 2018</copyright>
+    <tags>football-data football soccer</tags>
+  </metadata>
+</package>
