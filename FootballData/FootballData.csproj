@@ -78,6 +78,7 @@
     <EmbeddedResource Include="FootballDataConfig.xml" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="FootballData.nuspec" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
