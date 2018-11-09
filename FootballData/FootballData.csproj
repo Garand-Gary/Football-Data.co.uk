@@ -1,40 +1,24 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{60330BA1-420F-4CD9-8E4C-D98FF682EB13}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>FootballData</RootNamespace>
     <AssemblyName>Football-Data-API</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Debug\Football-Data-API.xml</DocumentationFile>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
+    <TargetFramework>net452</TargetFramework>
+    <PackageId>Football-Data.co.uk API</PackageId>
+    <Description>A small utility to make accessing data from football-data.co.uk easier</Description>
+    <Company>Garand Software Limited</Company>
+    <Product>Football-Data.co.uk API</Product>
+    <Copyright>Copyright © 2018</Copyright>
+    <RepositoryType>GitHub</RepositoryType>
+    <PackageIconUrl>https://garyanderson.org/Images/Projects/football-data.png</PackageIconUrl>
+    <PackageProjectUrl>https://github.com/Garand-Gary/Football-Data.co.uk</PackageProjectUrl>
+    <PackageTags>football-data football soccer</PackageTags>
+    <PackageReleaseNotes>This is an unofficial package and is in no way associated with football-data.co.uk.</PackageReleaseNotes>
+    <RepositoryUrl>https://github.com/Garand-Gary/Football-Data.co.uk</RepositoryUrl>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CsvHelper, Version=6.0.0.0, Culture=neutral, PublicKeyToken=8c4959082be5c823, processorArchitecture=MSIL">
-      <HintPath>..\packages\CsvHelper.6.1.0\lib\net45\CsvHelper.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
+	<PackageReference Include="CsvHelper" Version="6.0.0.0" />
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
@@ -46,47 +30,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AsianHandicapBet.cs" />
-    <Compile Include="Bookmaker.cs" />
-    <Compile Include="Bookmakers.cs" />
-    <Compile Include="Config.cs" />
-    <Compile Include="Country.cs" />
-    <Compile Include="CsvOps.cs" />
-    <Compile Include="DataFileMap.cs" />
-    <Compile Include="Fixture.cs" />
-    <Compile Include="Fixtures.cs" />
-    <Compile Include="Countries.cs" />
-    <Compile Include="GoalsBet.cs" />
-    <Compile Include="League.cs" />
-    <Compile Include="Leagues.cs" />
-    <Compile Include="Match.cs" />
-    <Compile Include="Betting.cs" />
-    <Compile Include="MatchBet.cs" />
-    <Compile Include="Season.cs" />
-    <Compile Include="Seasons.cs" />
-    <Compile Include="Statistics.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Referee.cs" />
-    <Compile Include="Result.cs" />
-    <Compile Include="Results.cs" />
-    <Compile Include="Score.cs" />
-    <Compile Include="Statistic.cs" />
-    <Compile Include="Team.cs" />
-    <Compile Include="WebOps.cs" />
+    <Folder Include="Properties\" />
   </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="FootballDataConfig.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="FootballData.nuspec" />
-    <None Include="packages.config" />
-  </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
 </Project>
