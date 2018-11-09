@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2003
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FootballData", "FootballData\FootballData.csproj", "{60330BA1-420F-4CD9-8E4C-D98FF682EB13}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FootballData", "FootballData\FootballData.csproj", "{60330BA1-420F-4CD9-8E4C-D98FF682EB13}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -18,5 +18,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0D289E26-4562-4419-95A9-3E0D7294A043}
 	EndGlobalSection
 EndGlobal
