@@ -5,7 +5,7 @@
     <RootNamespace>FootballData</RootNamespace>
     <AssemblyName>Football-Data-API</AssemblyName>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <PackageId>Football-Data.co.uk API</PackageId>
+    <PackageId>Football-Data.co.uk</PackageId>
     <Description>A small utility to make accessing data from football-data.co.uk easier</Description>
     <Company>Garand Software Limited</Company>
     <Product>Football-Data.co.uk API</Product>
@@ -18,6 +18,7 @@
     <RepositoryUrl>https://github.com/Garand-Gary/Football-Data.co.uk</RepositoryUrl>
     <AssemblyVersion>1.1.0.0</AssemblyVersion>
     <Version>1.1.0</Version>
+    <Authors>Gary Anderson</Authors>
   </PropertyGroup>
   <ItemGroup>
 	<PackageReference Include="CsvHelper" Version="8.2.0" />
