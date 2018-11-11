@@ -5,7 +5,7 @@
     <RootNamespace>FootballData</RootNamespace>
     <AssemblyName>Football-Data-API</AssemblyName>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <PackageId>Football-Data.co.uk</PackageId>
+    <PackageId>Football-Data-API</PackageId>
     <Description>A small utility to make accessing data from football-data.co.uk easier</Description>
     <Company>Garand Software Limited</Company>
     <Product>Football-Data.co.uk API</Product>
