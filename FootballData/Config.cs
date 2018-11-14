@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FootballData.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Xml.Linq;
@@ -7,7 +8,7 @@ namespace FootballData
 {
     internal static class Config
     {
-        private static string configFileName = "FootballData.FootballDataConfig.xml";
+        private static readonly string configFileName = "FootballData.FootballDataConfig.xml";
 
         internal static string ResultUrl
         {

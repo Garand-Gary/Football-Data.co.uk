@@ -1,4 +1,6 @@
-﻿namespace FootballData
+﻿using System.Collections.Generic;
+
+namespace FootballData.Entities
 {
     /// <summary>
     /// Represents a team which participated in a match
@@ -13,6 +15,6 @@
         /// <summary>
         /// Statistics related to this team for a past match. Only applicable to results, not fixtures
         /// </summary>
-        public Statistics Stats { get; set; }
+        public List<Statistic> Stats { get; set; }
     }
 }

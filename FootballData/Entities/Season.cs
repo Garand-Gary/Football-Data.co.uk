@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace FootballData
+namespace FootballData.Entities
 {
     /// <summary>
     /// A class representing a season that football-data.co.uk holds data for

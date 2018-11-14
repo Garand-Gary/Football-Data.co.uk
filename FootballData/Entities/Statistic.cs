@@ -1,4 +1,4 @@
-﻿namespace FootballData
+﻿namespace FootballData.Entities
 {
     /// <summary>
     /// A class representing a statistic about this team during a completed match (Result)

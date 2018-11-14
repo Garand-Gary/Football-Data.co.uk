@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FootballData.Entities;
+using System;
 using System.IO;
 using System.Net;
 

@@ -16,8 +16,8 @@
     <PackageTags>football-data football soccer</PackageTags>
     <PackageReleaseNotes>This is an unofficial package and is in no way associated with football-data.co.uk.</PackageReleaseNotes>
     <RepositoryUrl>https://github.com/Garand-Gary/Football-Data.co.uk</RepositoryUrl>
-    <AssemblyVersion>1.1.0.0</AssemblyVersion>
-    <Version>1.1.0</Version>
+    <AssemblyVersion>2.0.0.0</AssemblyVersion>
+    <Version>2.0.0-alpha</Version>
     <Authors>Gary Anderson</Authors>
   </PropertyGroup>
   <ItemGroup>

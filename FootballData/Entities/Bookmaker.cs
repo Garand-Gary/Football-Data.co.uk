@@ -1,4 +1,4 @@
-﻿namespace FootballData
+﻿namespace FootballData.Entities
 {
     /// <summary>
     /// Class giving the football-data.co.uk ID for a bookmaker and its proper name

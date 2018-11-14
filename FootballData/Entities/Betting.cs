@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace FootballData
+namespace FootballData.Entities
 {
     /// <summary>
     /// Contains odds for different types of bets and from different bookmakers

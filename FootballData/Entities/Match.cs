@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace FootballData
+namespace FootballData.Entities
 {
     internal class Match
     {

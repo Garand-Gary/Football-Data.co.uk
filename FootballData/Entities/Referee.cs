@@ -1,4 +1,4 @@
-﻿namespace FootballData
+﻿namespace FootballData.Entities
 {
     /// <summary>
     /// The referee of the match

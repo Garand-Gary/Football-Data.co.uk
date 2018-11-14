@@ -1,7 +1,8 @@
 ﻿using System.Linq;
-using CsvHelper.Configuration;
-using System.Collections.Generic;
 using CsvHelper;
+using CsvHelper.Configuration;
+using FootballData.Entities;
+using System.Collections.Generic;
 
 namespace FootballData
 {
@@ -32,8 +33,25 @@ namespace FootballData
     {
         public HomeTeamMap()
         {
+            var prefix = "H";
+
             Map(x => x.Name).Name("HomeTeam");
-            References<HomeTeamStatsMap>(x => x.Stats);
+            Map(x => x.Stats).ConvertUsing(row =>
+            {
+                var list = new List<Statistic>();
+
+                list.AddIfNotNull(MatchStatsHelper.GetStat(Statistic.StatType.Shots, prefix + "S", row));
+                list.AddIfNotNull(MatchStatsHelper.GetStat(Statistic.StatType.ShotsOnTarget, prefix + "ST", row));
+                list.AddIfNotNull(MatchStatsHelper.GetStat(Statistic.StatType.HitWoodwork, prefix + "HW", row));
+                list.AddIfNotNull(MatchStatsHelper.GetStat(Statistic.StatType.Corners, prefix + "C", row));
+                list.AddIfNotNull(MatchStatsHelper.GetStat(Statistic.StatType.FoulsCommitted, prefix + "F", row));
+                list.AddIfNotNull(MatchStatsHelper.GetStat(Statistic.StatType.Offsides, prefix + "O", row));
+                list.AddIfNotNull(MatchStatsHelper.GetStat(Statistic.StatType.YellowCards, prefix + "Y", row));
+                list.AddIfNotNull(MatchStatsHelper.GetStat(Statistic.StatType.RedCards, prefix + "R", row));
+                list.AddIfNotNull(MatchStatsHelper.GetStat(Statistic.StatType.BookingPoints, prefix + "BP", row));
+
+                return list;
+            });
         }
     }
 
@@ -41,8 +59,25 @@ namespace FootballData
     {
         public AwayTeamMap()
         {
+            var prefix = "A";
+
             Map(x => x.Name).Name("AwayTeam");
-            References<AwayTeamStatsMap>(x => x.Stats);
+            Map(x => x.Stats).ConvertUsing(row =>
+            {
+                var list = new List<Statistic>();
+
+                list.AddIfNotNull(MatchStatsHelper.GetStat(Statistic.StatType.Shots, prefix + "S", row));
+                list.AddIfNotNull(MatchStatsHelper.GetStat(Statistic.StatType.ShotsOnTarget, prefix + "ST", row));
+                list.AddIfNotNull(MatchStatsHelper.GetStat(Statistic.StatType.HitWoodwork, prefix + "HW", row));
+                list.AddIfNotNull(MatchStatsHelper.GetStat(Statistic.StatType.Corners, prefix + "C", row));
+                list.AddIfNotNull(MatchStatsHelper.GetStat(Statistic.StatType.FoulsCommitted, prefix + "F", row));
+                list.AddIfNotNull(MatchStatsHelper.GetStat(Statistic.StatType.Offsides, prefix + "O", row));
+                list.AddIfNotNull(MatchStatsHelper.GetStat(Statistic.StatType.YellowCards, prefix + "Y", row));
+                list.AddIfNotNull(MatchStatsHelper.GetStat(Statistic.StatType.RedCards, prefix + "R", row));
+                list.AddIfNotNull(MatchStatsHelper.GetStat(Statistic.StatType.BookingPoints, prefix + "BP", row));
+
+                return list;
+            });
         }
     }
 
@@ -69,54 +104,6 @@ namespace FootballData
         {
             Map(x => x.HomeGoals).Name("HTHG").Default(0);
             Map(x => x.AwayGoals).Name("HTAG").Default(0);
-        }
-    }
-
-    internal class HomeTeamStatsMap : StatsMap
-    {
-        public HomeTeamStatsMap() : base("H") { }
-    }
-
-    internal class AwayTeamStatsMap : StatsMap
-    {
-        public AwayTeamStatsMap() : base("A") { }
-    }
-
-    internal class StatsMap : ClassMap<Statistics>
-    {
-        public StatsMap(string prefix)
-        {
-            Map(x => x.List).ConvertUsing(row =>
-            {
-                var list = new List<Statistic>();
-
-                list.AddIfNotNull(GetStat(Statistic.StatType.Shots, prefix + "S", row));
-                list.AddIfNotNull(GetStat(Statistic.StatType.ShotsOnTarget, prefix + "ST", row));
-                list.AddIfNotNull(GetStat(Statistic.StatType.HitWoodwork, prefix + "HW", row));
-                list.AddIfNotNull(GetStat(Statistic.StatType.Corners, prefix + "C", row));
-                list.AddIfNotNull(GetStat(Statistic.StatType.FoulsCommitted, prefix + "F", row));
-                list.AddIfNotNull(GetStat(Statistic.StatType.Offsides, prefix + "O", row));
-                list.AddIfNotNull(GetStat(Statistic.StatType.YellowCards, prefix + "Y", row));
-                list.AddIfNotNull(GetStat(Statistic.StatType.RedCards, prefix + "R", row));
-                list.AddIfNotNull(GetStat(Statistic.StatType.BookingPoints, prefix + "BP", row));
-
-                return list;
-            }
-            );
-        }
-
-        private Statistic GetStat(Statistic.StatType type, string csvFieldName, IReaderRow row)
-        {
-            try
-            {
-                var value = row.GetField<int?>(csvFieldName);
-                if (value != null) { return new Statistic { Type = type, Value = value }; }
-                return null;
-            }
-            catch
-            {
-                return null;
-            }
         }
     }
 
@@ -260,6 +247,24 @@ namespace FootballData
         internal static void AddIfNotNull<T>(this List<T> list, T item)
         {
             if (item != null) { list.Add(item); }
+        }
+    }
+
+    // Helper class for dealing with the match stats
+    internal static class MatchStatsHelper
+    {
+        internal static Statistic GetStat(Statistic.StatType type, string csvFieldName, IReaderRow row)
+        {
+            try
+            {
+                var value = row.GetField<int?>(csvFieldName);
+                if (value != null) { return new Statistic { Type = type, Value = value }; }
+                return null;
+            }
+            catch
+            {
+                return null;
+            }
         }
     }
 }

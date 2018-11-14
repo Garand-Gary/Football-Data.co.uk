@@ -1,4 +1,4 @@
-﻿namespace FootballData
+﻿namespace FootballData.Entities
 {
     /// <summary>
     /// A class that represents the Over/Under 2.5 Goals odds offered by a bookmaker

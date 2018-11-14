@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using FootballData.Entities;
+using System.Collections.Generic;
 using System.Linq;
 using CsvHelper;
 using System.IO;

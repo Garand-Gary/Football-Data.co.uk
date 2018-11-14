@@ -1,9 +1,9 @@
-﻿namespace FootballData
+﻿namespace FootballData.Entities
 {
     /// <summary>
-    /// A class that represents the Asian Handicap odds offered by a bookmaker
+    /// A class that represents the Home/Draw/Away (1X2) odds offered by a bookmaker
     /// </summary>
-    public class AsianHandicapBet
+    public class MatchBet
     {
         /// <summary>
         /// The bookmaker offering these odds
@@ -16,13 +16,13 @@
         public decimal Home { get; set; }
 
         /// <summary>
+        /// The odds offered to back the draw
+        /// </summary>
+        public decimal Draw { get; set; }
+
+        /// <summary>
         /// The odds offered to back the away team winning
         /// </summary>
         public decimal Away { get; set; }
-
-        /// <summary>
-        /// The handicap for this bet as it applies to the home team
-        /// </summary>
-        public decimal HomeTeamHandicap { get; set; }
     }
 }

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace FootballData
+namespace FootballData.Entities
 {
     /// <summary>
     /// A class representing a football match which has yet to be played
