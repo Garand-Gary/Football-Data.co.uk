@@ -21,6 +21,9 @@
     <Authors>Gary Anderson</Authors>
   </PropertyGroup>
   <ItemGroup>
+    <EmbeddedResource Include="FootballDataConfig.xml" />
+  </ItemGroup>
+  <ItemGroup>
 	<PackageReference Include="CsvHelper" Version="8.2.0" />
   </ItemGroup>
 </Project>
