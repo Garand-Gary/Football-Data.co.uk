@@ -5,6 +5,7 @@ namespace FootballData.Entities
     internal class Match
     {
         public League Division { get; set; }
+        public Season Season { get; set; }
         public DateTime MatchDate { get; set; }
         public Team HomeTeam { get; set; }
         public Team AwayTeam { get; set; }

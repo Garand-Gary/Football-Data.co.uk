@@ -8,7 +8,7 @@ namespace FootballData
 {
     internal class CsvOps
     {
-        internal static List<Match> GetMatchesFromCsv(Stream data)
+        internal static List<Match> GetMatchesFromCsv(Stream data, Season season)
         {
             data.Position = 0;
             var output = new List<Match>();
@@ -36,6 +36,7 @@ namespace FootballData
                         {
                             // Can't figure out how to lookup and assign an object in ClassMap so will do it here
                             record.Division = league;
+                            record.Season = season;
 
                             output.Add(record);
                         }

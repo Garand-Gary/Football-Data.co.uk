@@ -34,7 +34,7 @@ namespace FootballData
             var url = GenerateUrl(league.Id, season.Id);
 
             var data = WebOps.GetCsvFile(url, out lastModifiedTime);
-            var matches = CsvOps.GetMatchesFromCsv(data);
+            var matches = CsvOps.GetMatchesFromCsv(data, season);
 
             var results = matches.Select(match => new Result(match)).ToList();
 

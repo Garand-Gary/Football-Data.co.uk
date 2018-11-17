@@ -15,6 +15,11 @@ namespace FootballData.Entities
         public League Division { get { return thisMatch.Division; } }
 
         /// <summary>
+        /// The season this match was played in
+        /// </summary>
+        public Season Season { get { return thisMatch.Season; } }
+
+        /// <summary>
         /// The date this match was played
         /// </summary>
         public DateTime MatchDate { get { return thisMatch.MatchDate; } }

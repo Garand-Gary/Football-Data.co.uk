@@ -28,7 +28,7 @@ namespace FootballData
         public static List<Fixture> Get(out DateTime lastModifiedTime)
         {
             var data = WebOps.GetCsvFile(Config.FixturesUrl, out lastModifiedTime);
-            var matches = CsvOps.GetMatchesFromCsv(data);
+            var matches = CsvOps.GetMatchesFromCsv(data, Seasons.GetLatest());
 
             var fixtures = matches.Select(match => new Fixture(match)).ToList();
 
