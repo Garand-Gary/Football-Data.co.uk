@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace FootballData
 {
@@ -17,9 +18,9 @@ namespace FootballData
         /// <param name="season">The season for which the data file should be checked</param>
         /// <param name="sinceDate">The date since which to check if the data has been updated</param>
         /// <returns>Returns a boolean with "true" if the data has been updated since the provided date</returns>
-        public static bool DataHasBeenUpdated(League league, Season season, DateTime sinceDate)
+        public static async Task<bool> DataHasBeenUpdated(League league, Season season, DateTime sinceDate)
         {
-            return WebOps.GetLastModifiedTime(GenerateUrl(league.Id, season.Id)) > sinceDate;
+            return await WebOps.GetLastModifiedTime(GenerateUrl(league.Id, season.Id)) > sinceDate;
         }
 
         /// <summary>
@@ -27,31 +28,17 @@ namespace FootballData
         /// </summary>
         /// <param name="league">The league for which results should be returned</param>
         /// <param name="season">The season for which results should be returned</param>
-        /// <param name="lastModifiedTime">Output parameter which will show the last modified time of the results file</param>
         /// <returns></returns>
-        public static List<Result> Get(League league, Season season, out DateTime lastModifiedTime)
+        public static async Task<ResultList> Get(League league, Season season)
         {
             var url = GenerateUrl(league.Id, season.Id);
 
-            var data = WebOps.GetCsvFile(url, out lastModifiedTime);
-            var matches = CsvOps.GetMatchesFromCsv(data, season);
+            var data = await WebOps.GetCsvFile(url);
+            var matches = CsvOps.GetMatchesFromCsv(data.File, season);
 
             var results = matches.Select(match => new Result(match)).ToList();
 
-            return results;
-        }
-
-        /// <summary>
-        /// Get all results for the requested league and season
-        /// </summary>
-        /// <param name="league">The league for which results should be returned</param>
-        /// <param name="season">The season for which results should be returned</param>
-        /// <returns></returns>
-        public static List<Result> Get(League league, Season season)
-        {
-            // Create a last modified parameter to satisfy the core method, but don't use it
-            var lastModified = new DateTime();
-            return Get(league, season, out lastModified);
+            return new ResultList() { Results = results, LastModifiedTime = data.LastModified };
         }
 
         private static string GenerateUrl(string leagueId, string season)
