@@ -2,17 +2,20 @@
 using System;
 using System.IO;
 using System.Net;
+using System.Threading.Tasks;
 
 namespace FootballData
 {
     internal static class WebOps
     {
-        internal static DateTime GetLastModifiedTime(string url)
+        internal static async Task<DateTime> GetLastModifiedTime(string url)
         {
             Uri uri = new Uri(url);
 
             var request = (HttpWebRequest)WebRequest.Create(uri);
-            using (var response = (HttpWebResponse)request.GetResponse())
+            request.Method = WebRequestMethods.Http.Head;
+
+            using (var response = (HttpWebResponse)await request.GetResponseAsync())
             {
                 if (response.StatusCode == HttpStatusCode.OK)
                 {
@@ -25,22 +28,22 @@ namespace FootballData
             }
         }
 
-        internal static Stream GetCsvFile(string url, out DateTime lastModifiedTime)
+        internal static async Task<CsvFile> GetCsvFile(string url)
         {
             Uri uri = new Uri(url);
 
             var request = (HttpWebRequest)WebRequest.Create(uri);
-            using (var response = (HttpWebResponse)request.GetResponse())
+            using (var response = (HttpWebResponse)await request.GetResponseAsync())
             {
                 if (response.StatusCode == HttpStatusCode.OK)
                 {
-                    lastModifiedTime = response.LastModified;
+                    var lastModifiedTime = response.LastModified;
                     var outputStream = new MemoryStream();
 
                     using (Stream responseStream = response.GetResponseStream())
                     {
                         responseStream.CopyTo(outputStream);
-                        return outputStream;
+                        return new CsvFile() { File = outputStream, LastModified = lastModifiedTime };
                     }
                 }
                 else
