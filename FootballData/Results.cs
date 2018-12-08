@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace FootballData
 {
@@ -20,7 +21,8 @@ namespace FootballData
         /// <returns>Returns a boolean with "true" if the data has been updated since the provided date</returns>
         public static async Task<bool> DataHasBeenUpdated(League league, Season season, DateTime sinceDate)
         {
-            return await WebOps.GetLastModifiedTime(GenerateUrl(league.Id, season.Id)) > sinceDate;
+            var config = Config.GetConfigFile();
+            return await WebOps.GetLastModifiedTime(GenerateUrl(config, league.Id, season.Id)) > sinceDate;
         }
 
         /// <summary>
@@ -31,7 +33,8 @@ namespace FootballData
         /// <returns></returns>
         public static async Task<ResultList> Get(League league, Season season)
         {
-            var url = GenerateUrl(league.Id, season.Id);
+            var config = Config.GetConfigFile();
+            var url = GenerateUrl(config, league.Id, season.Id);
 
             var data = await WebOps.GetCsvFile(url);
             var matches = CsvOps.GetMatchesFromCsv(data.File, season);
@@ -41,9 +44,9 @@ namespace FootballData
             return new ResultList() { Results = results, LastModifiedTime = data.LastModified };
         }
 
-        private static string GenerateUrl(string leagueId, string season)
+        private static string GenerateUrl(XDocument config, string leagueId, string season)
         {
-            var baseUrl = Config.ResultUrl;
+            var baseUrl = Config.ResultUrl(config);
             var url = baseUrl
                 .Replace("{season}", season)
                 .Replace("{leagueId}", leagueId);

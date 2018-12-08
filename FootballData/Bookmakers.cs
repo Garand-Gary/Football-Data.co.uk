@@ -14,7 +14,9 @@ namespace FootballData
         /// <returns></returns>
         public static List<Bookmaker> Get()
         {
-            return Config.GetBookmakers();
+            var config = Config.GetConfigFile();
+
+            return Config.GetBookmakers(config);
         }
     }
 }

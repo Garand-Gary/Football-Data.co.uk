@@ -15,7 +15,9 @@ namespace FootballData
         /// <returns></returns>
         public static List<League> GetAll()
         {
-            return Config.GetLeagues();
+            var config = Config.GetConfigFile();
+
+            return Config.GetLeagues(config);
         }
 
         /// <summary>

@@ -8,22 +8,20 @@ namespace FootballData
 {
     internal static class Config
     {
-        private static readonly string configFileName = "FootballData.FootballDataConfig.xml";
+        private const string configFileName = "FootballData.FootballDataConfig.xml";
 
-        internal static string ResultUrl
+        internal static string ResultUrl(XDocument config)
         {
-            get { return GetConfigValue("url", "resultUrl", "url"); }
+            return GetConfigValue(config, "url", "resultUrl", "url");
         }
 
-        internal static string FixturesUrl
+        internal static string FixturesUrl(XDocument config)
         {
-            get { return GetConfigValue("url", "fixturesUrl", "url"); ; }
+            return GetConfigValue(config, "url", "fixturesUrl", "url");
         }
 
-        internal static List<Country> GetCountries()
+        internal static List<Country> GetCountries(XDocument config)
         {
-            var config = GetConfigFile();
-
             return config.Descendants("country")
                 .Select(x => new Country()
                 {
@@ -34,12 +32,10 @@ namespace FootballData
                 .ToList();
         }
 
-        internal static List<League> GetLeagues()
+        internal static List<League> GetLeagues(XDocument config)
         {
-            var config = GetConfigFile();
-
             // We want the proper country object associated with each league, not just the ID
-            var countries = GetCountries();
+            var countries = GetCountries(config);
 
             return config.Descendants("league")
                 .Select(x => new League()
@@ -52,10 +48,8 @@ namespace FootballData
                 .ToList();
         }
 
-        internal static List<Bookmaker> GetBookmakers()
+        internal static List<Bookmaker> GetBookmakers(XDocument config)
         {
-            var config = GetConfigFile();
-
             return config.Descendants("bookmaker")
                 .Select(x => new Bookmaker()
                 {
@@ -65,7 +59,7 @@ namespace FootballData
                 .ToList();
         }
 
-        private static XDocument GetConfigFile()
+        internal static XDocument GetConfigFile(string configFile = configFileName)
         {
             var assembly = System.Reflection.Assembly.GetExecutingAssembly();
             var doc = assembly.GetManifestResourceStream(configFileName);
@@ -74,10 +68,8 @@ namespace FootballData
             return config;
         }
 
-        private static string GetConfigValue(string nodeType, string id, string attribute)
+        private static string GetConfigValue(XDocument config, string nodeType, string id, string attribute)
         {
-            var config = GetConfigFile();
-
             return config.Descendants(nodeType)
                 .Where(x => (string)x.Attribute("id") == id)
                 .Select(x => x.Attribute(attribute).Value)
