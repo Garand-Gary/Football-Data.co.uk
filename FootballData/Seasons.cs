@@ -22,16 +22,10 @@ namespace FootballData
         // Cue a strange-timed world cup ruining this idea.
         internal static int StartYear = 1993;
 
-        internal static int LatestSeasonStartYear
+        internal static int LatestSeasonStartYear(DateTime currentDate)
         {
-            get
-            {
-                // var now = new DateTime(2018, 07, 01);
-                var now = DateTime.Now;
-
-                // From January to July the start year of the latest season was the previous year
-                return now.Year - (now.Month < 7 ? 1 : 0);
-            }
+            // From January to July the start year of the latest season was the previous year
+            return currentDate.Year - (currentDate.Month < 7 ? 1 : 0);
         }
 
         /// <summary>
@@ -40,17 +34,7 @@ namespace FootballData
         /// <returns></returns>
         public static List<Season> Get()
         {
-            var seasons = new List<Season>();
-            var loopYear = StartYear;
-
-            do
-            {
-                seasons.Add(new Season(loopYear, loopYear + 1));
-
-                loopYear += 1;
-            } while (loopYear <= LatestSeasonStartYear);
-
-            return seasons.OrderByDescending(x => x.StartYear).ToList();
+            return GenerateSeasons(StartYear, LatestSeasonStartYear(DateTime.Now));
         }
 
         /// <summary>
@@ -60,6 +44,21 @@ namespace FootballData
         public static Season GetLatest()
         {
             return Get().First();
+        }
+
+        internal static List<Season> GenerateSeasons(int startYear, int latestSeasonStartYear)
+        {
+            var seasons = new List<Season>();
+            var loopYear = startYear;
+
+            do
+            {
+                seasons.Add(new Season(loopYear, loopYear + 1));
+
+                loopYear += 1;
+            } while (loopYear <= latestSeasonStartYear);
+
+            return seasons.OrderByDescending(x => x.StartYear).ToList();
         }
     }
 }

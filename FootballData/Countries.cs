@@ -14,7 +14,9 @@ namespace FootballData
         /// <returns></returns>
         public static List<Country> Get()
         {
-            return Config.GetCountries();
+            var config = Config.GetConfigFile();
+
+            return Config.GetCountries(config);
         }
     }
 }
